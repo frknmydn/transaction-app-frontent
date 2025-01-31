@@ -3,7 +3,6 @@ import React from 'react';
 import MerchantRow from './MerchantRow';
 
 function MerchantAnalysis({ transactions }) {
-  // transactions içinde: [ { original, normalized: { merchant, ... } }, ... ]
   return (
     <div>
       <h2 className="text-xl font-semibold mb-4">Normalized Merchants</h2>

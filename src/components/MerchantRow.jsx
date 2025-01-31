@@ -11,7 +11,7 @@ function MerchantRow({ transaction }) {
       
       <div className="mt-2 flex items-center justify-between">
         <div>
-          {/* Tag / Flag Alanları */}
+          {}
           <div className="flex flex-wrap gap-2 text-sm text-gray-600 mt-1">
             {category && <span className="bg-gray-100 px-2 py-1 rounded">{category}</span>}
             {sub_category && <span className="bg-gray-100 px-2 py-1 rounded">{sub_category}</span>}

@@ -1,7 +1,6 @@
 import React from 'react';
 
 function DashboardCards({ summary }) {
-  // If no summary yet, you can display placeholders or nothing
   if (!summary) {
     return (
       <div className="mb-4">

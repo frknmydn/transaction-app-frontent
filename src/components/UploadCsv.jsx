@@ -13,7 +13,7 @@ function UploadCsv({ onSetNormalized, onSetPatterns, onSetSummary }) {
     try {
       setIsUploading(true);
 
-      const response = await fetch('http://localhost:3000/api/upload', {
+      const response = await fetch('https://transaction-analysis-production.up.railway.app/api/upload', {
         method: 'POST',
         body: formData,
       });
@@ -27,11 +27,9 @@ function UploadCsv({ onSetNormalized, onSetPatterns, onSetSummary }) {
       const data = await response.json();
       console.log('File uploaded successfully and data received:', data);
 
-      // Update states in the parent
       onSetNormalized(data.normalized_transactions || []);
       onSetPatterns(data.detected_patterns || []);
 
-      // Now we capture the "summary" field (if it exists)
       if (onSetSummary && data.summary) {
         onSetSummary(data.summary);
       }
