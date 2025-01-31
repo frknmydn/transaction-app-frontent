@@ -1,31 +1,35 @@
-// src/components/DashboardCards.jsx
 import React from 'react';
 
-function DashboardCards() {
-  // Statik veya backend'den gelen verilerle hesaplanabilir
-  const totalSpend = 0; 
-  const transactionCount = 0;
-  const avgTransaction = 0;
-  const merchantCount = 0;
+function DashboardCards({ summary }) {
+  // If no summary yet, you can display placeholders or nothing
+  if (!summary) {
+    return (
+      <div className="mb-4">
+        <p className="text-gray-500">No summary data available yet.</p>
+      </div>
+    );
+  }
 
-  const cards = [
-    { label: 'Total Spend', value: `$${totalSpend}` },
-    { label: 'Transactions', value: transactionCount },
-    { label: 'Avg. Transaction', value: `$${avgTransaction}` },
-    { label: 'Merchants', value: merchantCount },
-  ];
+  const { totalSpend, transactions, avgTransaction, merchants } = summary;
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-      {cards.map((card, idx) => (
-        <div 
-          key={idx} 
-          className="bg-white rounded-md p-4 shadow-sm flex flex-col items-center"
-        >
-          <div className="text-gray-500 text-sm">{card.label}</div>
-          <div className="text-2xl font-semibold">{card.value}</div>
-        </div>
-      ))}
+    <div className="grid grid-cols-4 gap-4 mb-4">
+      <div className="bg-white rounded shadow p-4">
+        <h2 className="text-lg font-semibold mb-1">Total Spend</h2>
+        <p className="text-xl">${totalSpend}</p>
+      </div>
+      <div className="bg-white rounded shadow p-4">
+        <h2 className="text-lg font-semibold mb-1">Transactions</h2>
+        <p className="text-xl">{transactions}</p>
+      </div>
+      <div className="bg-white rounded shadow p-4">
+        <h2 className="text-lg font-semibold mb-1">Average</h2>
+        <p className="text-xl">${avgTransaction}</p>
+      </div>
+      <div className="bg-white rounded shadow p-4">
+        <h2 className="text-lg font-semibold mb-1">Merchants</h2>
+        <p className="text-xl">{merchants}</p>
+      </div>
     </div>
   );
 }
